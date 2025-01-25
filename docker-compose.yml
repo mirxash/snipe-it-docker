@@ -1,0 +1,15 @@
+version: "3"
+services:
+  snipeit:
+    image: snipe/snipe-it:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - .env
+    volumes:
+      - /var/www/snipeit:/var/lib/snipeit
+      - /etc/ssl/server.crt:/var/lib/snipeit/ssl/snipeit-ssl.crt:ro
+      - /etc/ssl/server.key:/var/lib/snipeit/ssl/snipeit-ssl.key:ro
+    extra_hosts:
+      - "snipeit.mirzainfo.com:127.0.0.1"
